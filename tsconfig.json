@@ -11,13 +11,6 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "src/*": ["./*"],
-      "adapter": ["./adapter"],
-      "sharedkernel": ["./sharedkernel"],
-      "di": ["./di"],
-      "domain": ["./domain"],
-      "infrastructure": ["./infrastructure"],
-      "usecase": ["./usecase"]
     },
     "incremental": true,
     "skipLibCheck": true,
