@@ -1,5 +1,30 @@
 {
   "compilerOptions": {
-    "sourceMap": true
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["./*"],
+      "adapter": ["./adapter"],
+      "sharedkernel": ["./sharedkernel"],
+      "di": ["./di"],
+      "domain": ["./domain"],
+      "infrastructure": ["./infrastructure"],
+      "usecase": ["./usecase"]
+    },
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false
   }
 }
