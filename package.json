@@ -1,5 +1,5 @@
 {
-  "name": "nashtanet-backend-express",
+  "name": "express-dependency_injection-clean_architecture",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
