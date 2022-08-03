@@ -1,4 +1,4 @@
-import { ReimbursementRequestDetailEntityInterface } from 'domain/entity/reimbursement-request-detail.entity';
+import { ReimbursementRequestDetailEntityInterface } from "core/entity/reimbursement-request-detail.entity";
 import {
   Column,
   CreateDateColumn,
@@ -8,14 +8,14 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ReimbursementBenefit, ReimbursementRequest, User } from '.';
+} from "typeorm";
+import { ReimbursementBenefit, ReimbursementRequest, User } from ".";
 
 @Entity()
 export class ReimbursementRequestDetail
   implements ReimbursementRequestDetailEntityInterface
 {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column({ nullable: true })
@@ -37,21 +37,21 @@ export class ReimbursementRequestDetail
   @ManyToOne(() => User, (user) => user.reimbursement_request_details, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_request_details, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_request_details, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -66,16 +66,16 @@ export class ReimbursementRequestDetail
   @ManyToOne(
     () => ReimbursementBenefit,
     (reimbursement_benefit) =>
-      reimbursement_benefit.reimbursement_request_details,
+      reimbursement_benefit.reimbursement_request_details
   )
-  @JoinColumn({ name: 'reimbursement_benefit_id' })
+  @JoinColumn({ name: "reimbursement_benefit_id" })
   reimbursement_benefit_id;
 
   @ManyToOne(
     () => ReimbursementRequest,
     (reimbursement_request) =>
-      reimbursement_request.reimbursement_request_details,
+      reimbursement_request.reimbursement_request_details
   )
-  @JoinColumn({ name: 'reimbursement_request_id' })
+  @JoinColumn({ name: "reimbursement_request_id" })
   reimbursement_request_id;
 }

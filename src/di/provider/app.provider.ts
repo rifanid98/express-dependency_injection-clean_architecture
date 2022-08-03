@@ -1,6 +1,6 @@
-import { ProviderRegistry } from "../../sharedkernel";
+import { ProviderRegistry } from "../../utils";
 import * as express from "express";
-import { AuthRouter } from "../../adapter/router";
+import { AuthRouter } from "../../interface/extl/v1/router";
 
 export const AppProvider: ProviderRegistry[] = [
   {

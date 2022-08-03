@@ -8,7 +8,7 @@ import * as helmet from "helmet";
 import * as cookieParser from "cookie-parser";
 import * as compression from "compression";
 import { config as dotenv } from "dotenv";
-import { AppRouter } from "./adapter/router";
+import { AppRouter } from "./interface/extl/v1/router";
 import { AppProvider } from "./di/provider/app.provider";
 
 @autoInjectable()

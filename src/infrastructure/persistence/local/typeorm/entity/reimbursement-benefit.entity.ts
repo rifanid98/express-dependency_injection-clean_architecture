@@ -1,4 +1,4 @@
-import { ReimbursementBenefitEntityInterface } from 'domain/entity/reimbursement-benefit.entity';
+import { ReimbursementBenefitEntityInterface } from "core/entity/reimbursement-benefit.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,14 +9,14 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ReimbursementRequestDetail, ReimbursementType, User } from '.';
+} from "typeorm";
+import { ReimbursementRequestDetail, ReimbursementType, User } from ".";
 
 @Entity()
 export class ReimbursementBenefit
   implements ReimbursementBenefitEntityInterface
 {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -29,21 +29,21 @@ export class ReimbursementBenefit
   @ManyToOne(() => User, (user) => user.reimbursement_benefits, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_benefits, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_benefits, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -57,16 +57,16 @@ export class ReimbursementBenefit
 
   @ManyToOne(
     () => ReimbursementType,
-    (reimbursement_type) => reimbursement_type.reimbursement_benefits,
+    (reimbursement_type) => reimbursement_type.reimbursement_benefits
   )
-  @JoinColumn({ name: 'reimbursement_type_id' })
+  @JoinColumn({ name: "reimbursement_type_id" })
   reimbursement_type_id?: number;
 
   @OneToMany(
     () => ReimbursementRequestDetail,
     (reimbursement_request_detail) =>
-      reimbursement_request_detail.reimbursement_benefit_id,
+      reimbursement_request_detail.reimbursement_benefit_id
   )
-  @JoinColumn({ name: 'reimbursement_type_id' })
+  @JoinColumn({ name: "reimbursement_type_id" })
   reimbursement_request_details?: number;
 }

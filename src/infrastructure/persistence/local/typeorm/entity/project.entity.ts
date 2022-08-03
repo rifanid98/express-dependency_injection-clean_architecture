@@ -1,4 +1,4 @@
-import { ProjectEntityInterface } from 'domain/entity/project.entity';
+import { ProjectEntityInterface } from "core/entity/project.entity";
 import {
   Column,
   CreateDateColumn,
@@ -8,8 +8,8 @@ import {
   ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Customer, Employee, User } from '.';
+} from "typeorm";
+import { Customer, Employee, User } from ".";
 
 @Entity()
 export class Project implements ProjectEntityInterface {
@@ -44,21 +44,21 @@ export class Project implements ProjectEntityInterface {
   @ManyToOne(() => User, (user) => user.menus, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.menus, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.menus, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -72,11 +72,11 @@ export class Project implements ProjectEntityInterface {
 
   // Relaltion
   @ManyToOne(() => Customer, (customer) => customer.projects)
-  @JoinColumn({ name: 'customer_id' })
+  @JoinColumn({ name: "customer_id" })
   customer_id: Customer;
 
   @ManyToOne(() => Employee, (employee) => employee.projects)
-  @JoinColumn({ name: 'sales_id' })
+  @JoinColumn({ name: "sales_id" })
   sales_id: Employee;
 
   // @OneToMany(() => KPISales, kpi_sales => kpi_sales.projects)

@@ -1,7 +1,7 @@
 import {
   ApprovalListEntityInterface,
   ApprovalStatus,
-} from "domain/entity/approval-list.entity";
+} from "core/entity/approval-list.entity";
 import {
   Column,
   CreateDateColumn,

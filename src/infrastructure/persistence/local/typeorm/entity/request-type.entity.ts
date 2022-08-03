@@ -1,4 +1,4 @@
-import { RequestTypeEntityInterface } from 'domain/entity/request-type.entity';
+import { RequestTypeEntityInterface } from "core/entity/request-type.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ApprovalList, ApprovalSetting, User } from '.';
+} from "typeorm";
+import { ApprovalList, ApprovalSetting, User } from ".";
 
 @Entity()
 export class RequestType implements RequestTypeEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -27,21 +27,21 @@ export class RequestType implements RequestTypeEntityInterface {
   @ManyToOne(() => User, (user) => user.request_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.request_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.request_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -55,13 +55,13 @@ export class RequestType implements RequestTypeEntityInterface {
 
   @OneToMany(
     () => ApprovalList,
-    (approval_list) => approval_list.request_type_id,
+    (approval_list) => approval_list.request_type_id
   )
   approval_lists: ApprovalList[];
 
   @OneToMany(
     () => ApprovalSetting,
-    (approval_setting) => approval_setting.request_type_id,
+    (approval_setting) => approval_setting.request_type_id
   )
   approval_settings: ApprovalSetting[];
 }

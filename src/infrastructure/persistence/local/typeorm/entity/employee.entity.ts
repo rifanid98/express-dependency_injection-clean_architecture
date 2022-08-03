@@ -1,4 +1,4 @@
-import { EmployeeEntityInterface } from 'domain/entity/employee.entity';
+import { EmployeeEntityInterface } from "core/entity/employee.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,13 +9,13 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Company, Position, PositionLevel, Project, Role, User } from '.';
-import { BusinessUnit } from 'infrastructure/persistence/local/typeorm/entity/business-unit.entity';
+} from "typeorm";
+import { Company, Position, PositionLevel, Project, Role, User } from ".";
+import { BusinessUnit } from "infrastructure/persistence/local/typeorm/entity/business-unit.entity";
 
 @Entity()
 export class Employee implements EmployeeEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -39,7 +39,7 @@ export class Employee implements EmployeeEntityInterface {
   @ManyToOne(
     () => PositionLevel,
     (position_level) => position_level.employees,
-    { eager: false },
+    { eager: false }
   )
   position_level: PositionLevel;
 
@@ -53,21 +53,21 @@ export class Employee implements EmployeeEntityInterface {
   @ManyToOne(() => User, (user) => user.employees, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.employees, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.employees, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()

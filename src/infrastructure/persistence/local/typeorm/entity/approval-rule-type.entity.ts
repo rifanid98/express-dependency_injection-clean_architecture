@@ -1,4 +1,4 @@
-import { ApprovalRuleTypeEntityInterface } from "domain/entity/approval-rule-type.entity";
+import { ApprovalRuleTypeEntityInterface } from "core/entity/approval-rule-type.entity";
 import {
   Column,
   CreateDateColumn,

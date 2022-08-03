@@ -1,4 +1,4 @@
-import { ReimbursementRequestEntityInterface } from 'domain/entity/reimbursement-request.entity';
+import { ReimbursementRequestEntityInterface } from "core/entity/reimbursement-request.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,14 +9,14 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ReimbursementRequestDetail, ReimbursementType, User } from '.';
+} from "typeorm";
+import { ReimbursementRequestDetail, ReimbursementType, User } from ".";
 
 @Entity()
 export class ReimbursementRequest
   implements ReimbursementRequestEntityInterface
 {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column({ nullable: true })
@@ -38,21 +38,21 @@ export class ReimbursementRequest
   @ManyToOne(() => User, (user) => user.reimbursement_requests, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_requests, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_requests, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -66,15 +66,15 @@ export class ReimbursementRequest
 
   @ManyToOne(
     () => ReimbursementType,
-    (reimbursement_type) => reimbursement_type.reimbursement_requests,
+    (reimbursement_type) => reimbursement_type.reimbursement_requests
   )
-  @JoinColumn({ name: 'reimbursement_type_id' })
+  @JoinColumn({ name: "reimbursement_type_id" })
   reimbursement_type_id?: number;
 
   @OneToMany(
     () => ReimbursementRequestDetail,
     (reimbursement_request_detail) =>
-      reimbursement_request_detail.reimbursement_request_id,
+      reimbursement_request_detail.reimbursement_request_id
   )
   reimbursement_request_details: ReimbursementRequestDetail[];
 }

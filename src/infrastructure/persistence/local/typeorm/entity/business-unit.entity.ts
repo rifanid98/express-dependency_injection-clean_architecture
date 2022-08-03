@@ -1,4 +1,4 @@
-import { BusinessUnitEntityInterface } from 'domain/entity/business-unit.entity';
+import { BusinessUnitEntityInterface } from "core/entity/business-unit.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Employee, User } from '.';
+} from "typeorm";
+import { Employee, User } from ".";
 
 @Entity()
 export class BusinessUnit implements BusinessUnitEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -81,21 +81,21 @@ export class BusinessUnit implements BusinessUnitEntityInterface {
   @ManyToOne(() => User, (user) => user.business_units, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.business_units, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.business_units, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()

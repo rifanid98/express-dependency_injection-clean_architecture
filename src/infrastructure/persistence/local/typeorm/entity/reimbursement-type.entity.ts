@@ -1,4 +1,4 @@
-import { ReimbursementTypeEntityInterface } from 'domain/entity/reimbursement-type.entity';
+import { ReimbursementTypeEntityInterface } from "core/entity/reimbursement-type.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ReimbursementBenefit, ReimbursementRequest, User } from '.';
+} from "typeorm";
+import { ReimbursementBenefit, ReimbursementRequest, User } from ".";
 
 @Entity()
 export class ReimbursementType implements ReimbursementTypeEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -24,21 +24,21 @@ export class ReimbursementType implements ReimbursementTypeEntityInterface {
   @ManyToOne(() => User, (user) => user.reimbursement_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.reimbursement_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -52,13 +52,13 @@ export class ReimbursementType implements ReimbursementTypeEntityInterface {
 
   @OneToMany(
     () => ReimbursementBenefit,
-    (rimbrsbnft) => rimbrsbnft.reimbursement_type_id,
+    (rimbrsbnft) => rimbrsbnft.reimbursement_type_id
   )
   reimbursement_benefits: ReimbursementBenefit[];
 
   @OneToMany(
     () => ReimbursementRequest,
-    (rimbrsbnft) => rimbrsbnft.reimbursement_type_id,
+    (rimbrsbnft) => rimbrsbnft.reimbursement_type_id
   )
   reimbursement_requests: ReimbursementRequest[];
 }

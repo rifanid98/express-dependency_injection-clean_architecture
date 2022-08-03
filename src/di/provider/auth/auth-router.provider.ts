@@ -1,6 +1,6 @@
-import { AuthHandler, AuthHandlerImpl } from "../../../adapter/handler";
+import { AuthHandler, AuthHandlerImpl } from "../../../interface/handler";
 import { Router } from "express";
-import { ProviderRegistry } from "sharedkernel";
+import { ProviderRegistry } from "../../../utils";
 
 export const AuthHandlerProvider: ProviderRegistry[] = [
   {

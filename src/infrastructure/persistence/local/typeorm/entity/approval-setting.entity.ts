@@ -1,4 +1,4 @@
-import { ApprovalSettingEntityInterface } from 'domain/entity/approval-setting.entity';
+import { ApprovalSettingEntityInterface } from "core/entity/approval-setting.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ApprovalRule, ApprovalSettingType, RequestType, User } from '.';
+} from "typeorm";
+import { ApprovalRule, ApprovalSettingType, RequestType, User } from ".";
 
 @Entity()
 export class ApprovalSetting implements ApprovalSettingEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column({ nullable: true })
@@ -42,21 +42,21 @@ export class ApprovalSetting implements ApprovalSettingEntityInterface {
   @ManyToOne(() => User, (user) => user.approval_settings, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_settings, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_settings, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -70,21 +70,21 @@ export class ApprovalSetting implements ApprovalSettingEntityInterface {
 
   @ManyToOne(
     () => RequestType,
-    (request_type) => request_type.approval_settings,
+    (request_type) => request_type.approval_settings
   )
-  @JoinColumn({ name: 'request_type_id' })
+  @JoinColumn({ name: "request_type_id" })
   request_type_id?: number;
 
   @ManyToOne(
     () => ApprovalSettingType,
-    (approval_setting_type) => approval_setting_type.approval_settings,
+    (approval_setting_type) => approval_setting_type.approval_settings
   )
-  @JoinColumn({ name: 'approval_setting_type_id' })
+  @JoinColumn({ name: "approval_setting_type_id" })
   approval_setting_type_id?: number;
 
   @OneToMany(
     () => ApprovalRule,
-    (approval_rule) => approval_rule.approval_setting_id,
+    (approval_rule) => approval_rule.approval_setting_id
   )
   approval_rules: ApprovalRule[];
 }

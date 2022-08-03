@@ -5,14 +5,14 @@ import {
   ProviderRegistry,
   Security,
   SecurityImpl,
-} from "sharedkernel";
+} from "../../../utils";
 import {
   AuthPresenter,
   AuthPresenterImpl,
-} from "adapter/presenter/auth.presenter";
-import { Jwt, JwtImpl } from "sharedkernel/jwt";
+} from "interface/handler/auth.presenter";
+import { Jwt, JwtImpl } from "utils/jwt";
 import { AuthLocalRepository } from "infrastructure/persistence/local/typeorm/repository";
-import { AuthRepository } from "domain/repository/auth.repository";
+import { AuthRepository } from "core/port/repository/auth.repository";
 
 export const AuthUsecaseProvider: ProviderRegistry[] = [
   {

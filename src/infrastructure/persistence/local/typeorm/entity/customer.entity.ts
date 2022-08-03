@@ -1,4 +1,4 @@
-import { CustomerEntityInterface } from 'domain/entity/customer.entity';
+import { CustomerEntityInterface } from "core/entity/customer.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Project, User } from '.';
+} from "typeorm";
+import { Project, User } from ".";
 
 @Entity()
 export class Customer implements CustomerEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -24,21 +24,21 @@ export class Customer implements CustomerEntityInterface {
   @ManyToOne(() => User, (user) => user.customers, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.customers, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.customers, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()

@@ -1,4 +1,4 @@
-import { RoleEntityInterface } from 'domain/entity/role.entity';
+import { RoleEntityInterface } from "core/entity/role.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { Employee, RoleMenu, User } from '.';
+} from "typeorm";
+import { Employee, RoleMenu, User } from ".";
 
 @Entity()
 export class Role implements RoleEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -24,21 +24,21 @@ export class Role implements RoleEntityInterface {
   @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()

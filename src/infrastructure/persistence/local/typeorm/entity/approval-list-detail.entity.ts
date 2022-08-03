@@ -1,4 +1,4 @@
-import { ApprovalListDetailEntityInterface } from "domain/entity/approval-list-detail.entity";
+import { ApprovalListDetailEntityInterface } from "core/entity/approval-list-detail.entity";
 import {
   Column,
   CreateDateColumn,
@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { ApprovalList, User } from ".";
-import { ApprovalStatus } from "domain/entity/approval-list.entity";
+import { ApprovalStatus } from "core/entity/approval-list.entity";
 
 @Entity()
 export class ApprovalListDetail implements ApprovalListDetailEntityInterface {

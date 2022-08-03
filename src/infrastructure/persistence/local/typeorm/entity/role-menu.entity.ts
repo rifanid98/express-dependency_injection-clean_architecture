@@ -1,4 +1,4 @@
-import { RoleMenuEntityInterface } from "domain/entity/role-menu.entity";
+import { RoleMenuEntityInterface } from "core/entity/role-menu.entity";
 import {
   Column,
   CreateDateColumn,

@@ -1,5 +1,5 @@
-import { User as UserEntity } from "domain/entity/user.entity";
-import { AuthRepositoryInterface } from "domain/repository/auth.repository";
+import { User as UserEntity } from "core/entity/user.entity";
+import { AuthRepositoryInterface } from "core/port/repository/auth.repository";
 import { EntityRepository, Repository } from "typeorm";
 import { User } from "../entity/user.entity";
 import { singleton } from "tsyringe";

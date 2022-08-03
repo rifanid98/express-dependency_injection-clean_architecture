@@ -1,4 +1,4 @@
-import { UserRepository } from "domain/repository/user.repository";
+import { UserRepository } from "core/port/repository/user.repository";
 import { EntityRepository, Repository } from "typeorm";
 import { User } from "../entity/user.entity";
 import { singleton } from "tsyringe";

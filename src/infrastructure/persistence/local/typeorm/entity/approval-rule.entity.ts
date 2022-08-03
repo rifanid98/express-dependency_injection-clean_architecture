@@ -1,4 +1,4 @@
-import { ApprovalRuleEntityInterface } from 'domain/entity/approval-rule.entity';
+import { ApprovalRuleEntityInterface } from "core/entity/approval-rule.entity";
 import {
   Column,
   CreateDateColumn,
@@ -8,12 +8,12 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ApprovalRuleType, ApprovalSetting, User } from '.';
+} from "typeorm";
+import { ApprovalRuleType, ApprovalSetting, User } from ".";
 
 @Entity()
 export class ApprovalRule implements ApprovalRuleEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column({ nullable: true })
@@ -35,21 +35,21 @@ export class ApprovalRule implements ApprovalRuleEntityInterface {
   @ManyToOne(() => User, (user) => user.approval_rules, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_rules, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_rules, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -63,15 +63,15 @@ export class ApprovalRule implements ApprovalRuleEntityInterface {
 
   @ManyToOne(
     () => ApprovalRuleType,
-    (approval_rule_type) => approval_rule_type.approval_rules,
+    (approval_rule_type) => approval_rule_type.approval_rules
   )
-  @JoinColumn({ name: 'approval_rule_type_id' })
+  @JoinColumn({ name: "approval_rule_type_id" })
   approval_rule_type_id?: number;
 
   @ManyToOne(
     () => ApprovalSetting,
-    (approval_setting) => approval_setting.approval_rules,
+    (approval_setting) => approval_setting.approval_rules
   )
-  @JoinColumn({ name: 'approval_setting_id' })
+  @JoinColumn({ name: "approval_setting_id" })
   approval_setting_id?: number;
 }

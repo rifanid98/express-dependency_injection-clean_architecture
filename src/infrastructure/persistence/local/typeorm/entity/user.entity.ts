@@ -5,7 +5,7 @@ import {
   MaritalStatus,
   Religion,
   UserEntityInterface,
-} from 'domain/entity/user.entity';
+} from "core/entity/user.entity";
 import {
   Column,
   CreateDateColumn,
@@ -16,7 +16,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
+} from "typeorm";
 import {
   ApprovalList,
   ApprovalListDetail,
@@ -38,11 +38,11 @@ import {
   RequestType,
   Role,
   RoleMenu,
-} from '.';
+} from ".";
 
 @Entity()
 export class User implements UserEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column({ nullable: true })
@@ -55,7 +55,7 @@ export class User implements UserEntityInterface {
   password?: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: Gender,
     nullable: true,
   })
@@ -65,7 +65,7 @@ export class User implements UserEntityInterface {
   birth_place?: string;
 
   @Column({
-    type: 'date',
+    type: "date",
     nullable: true,
   })
   birth_date?: string;
@@ -74,14 +74,14 @@ export class User implements UserEntityInterface {
   phone?: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: MaritalStatus,
     default: MaritalStatus.SINGLE,
   })
   marital_status?: MaritalStatus;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: Religion,
     default: null,
     nullable: true,
@@ -92,7 +92,7 @@ export class User implements UserEntityInterface {
   identity_number?: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: IdentityType,
     default: null,
     nullable: true,
@@ -100,7 +100,7 @@ export class User implements UserEntityInterface {
   identity_type?: IdentityType;
 
   @Column({
-    type: 'date',
+    type: "date",
     nullable: true,
   })
   identity_expiration_date?: string;
@@ -118,7 +118,7 @@ export class User implements UserEntityInterface {
   postal_code?: string;
 
   @Column({
-    type: 'enum',
+    type: "enum",
     enum: BloodType,
     default: null,
     nullable: true,

@@ -1,4 +1,4 @@
-import { ApprovalSettingTypeEntityInterface } from 'domain/entity/approval-setting-type.entity';
+import { ApprovalSettingTypeEntityInterface } from "core/entity/approval-setting-type.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,12 +9,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm';
-import { ApprovalSetting, User } from '.';
+} from "typeorm";
+import { ApprovalSetting, User } from ".";
 
 @Entity()
 export class ApprovalSettingType implements ApprovalSettingTypeEntityInterface {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id?: number;
 
   @Column()
@@ -24,21 +24,21 @@ export class ApprovalSettingType implements ApprovalSettingTypeEntityInterface {
   @ManyToOne(() => User, (user) => user.approval_setting_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'created_by' })
+  @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_setting_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'updated_by' })
+  @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
   @ManyToOne(() => User, (user) => user.approval_setting_types, {
     eager: false,
   })
-  @JoinColumn({ name: 'deleted_by' })
+  @JoinColumn({ name: "deleted_by" })
   deleted_by?: User;
 
   @CreateDateColumn()
@@ -52,7 +52,7 @@ export class ApprovalSettingType implements ApprovalSettingTypeEntityInterface {
 
   @OneToMany(
     () => ApprovalSetting,
-    (approval_setting) => approval_setting.approval_setting_type_id,
+    (approval_setting) => approval_setting.approval_setting_type_id
   )
   approval_settings: ApprovalSetting[];
 }
