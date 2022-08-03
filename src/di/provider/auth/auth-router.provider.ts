@@ -1,4 +1,4 @@
-import { AuthHandler, AuthHandlerImpl } from "../../../interface/handler";
+import { AuthHandler, AuthHandlerImpl } from "../../../interface/extl/v1/auth";
 import { Router } from "express";
 import { ProviderRegistry } from "../../../utils";
 

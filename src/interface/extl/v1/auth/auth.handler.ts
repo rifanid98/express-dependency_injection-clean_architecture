@@ -1,13 +1,7 @@
-import { GlobalResponse, Response as HttpResponse } from "../../utils";
+import { GlobalResponse, Response as HttpResponse } from "../../../../utils";
 import { singleton } from "tsyringe";
 import { Request, Response } from "express";
 
-// interface AuthHandlerInterface {
-//   signup(auth: AuthSignUpDto): GlobalResponse;
-//   signin(auth: AuthSignInDto): GlobalResponse;
-//   authenticator(user: User): GlobalResponse;
-//   authenticate(user: User, auth: AuthAuthenticateDto): GlobalResponse;
-// }
 interface AuthHandlerInterface {
   signup(req: Request, res: Response): GlobalResponse;
   signin(req: Request, res: Response): GlobalResponse;

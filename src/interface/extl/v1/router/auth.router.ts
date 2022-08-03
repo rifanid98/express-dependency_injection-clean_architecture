@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { AuthHandlerImpl } from "../../../handler/index";
+import { AuthHandlerImpl } from "../auth/index";
 import { autoInjectable, inject, registry, singleton } from "tsyringe";
 import { AuthHandlerProvider } from "../../../../di/provider/auth/auth-router.provider";
 import { AppRouter } from "./router.config";

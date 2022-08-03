@@ -9,9 +9,9 @@ import {
 import {
   AuthPresenter,
   AuthPresenterImpl,
-} from "interface/handler/auth.presenter";
+} from "interface/extl/v1/auth/auth.presenter";
 import { Jwt, JwtImpl } from "utils/jwt";
-import { AuthLocalRepository } from "infrastructure/persistence/local/typeorm/repository";
+import { AuthLocalRepository } from "infrastructure/persistence/typeorm/repository";
 import { AuthRepository } from "core/port/repository/auth.repository";
 
 export const AuthUsecaseProvider: ProviderRegistry[] = [

@@ -1,4 +1,4 @@
-import { RoleMenuEntityInterface } from "core/entity/role-menu.entity";
+import { RoleEntityInterface } from "core/entity/role.entity";
 import {
   Column,
   CreateDateColumn,
@@ -9,10 +9,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Menu, Role, User } from ".";
+import { User } from "./index";
 
 @Entity()
-export class RoleMenu implements RoleMenuEntityInterface {
+export class Role implements RoleEntityInterface {
   @PrimaryGeneratedColumn("increment")
   id?: number;
 
@@ -20,21 +20,21 @@ export class RoleMenu implements RoleMenuEntityInterface {
   name?: string;
 
   // @Column() FK
-  @ManyToOne(() => User, (user) => user.role_menus, {
+  @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
   @JoinColumn({ name: "created_by" })
   created_by?: User;
 
   // @Column() FK
-  @ManyToOne(() => User, (user) => user.role_menus, {
+  @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
   @JoinColumn({ name: "updated_by" })
   updated_by?: User;
 
   // @Column() FK
-  @ManyToOne(() => User, (user) => user.role_menus, {
+  @ManyToOne(() => User, (user) => user.roles, {
     eager: false,
   })
   @JoinColumn({ name: "deleted_by" })
@@ -48,10 +48,4 @@ export class RoleMenu implements RoleMenuEntityInterface {
 
   @DeleteDateColumn()
   deleted_at?: Date;
-
-  @ManyToOne(() => Menu, (menu) => menu.role_menus, { eager: false })
-  menu: Menu;
-
-  @ManyToOne(() => Role, (role) => role.role_menus, { eager: false })
-  role: Role;
 }

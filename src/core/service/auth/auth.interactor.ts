@@ -1,5 +1,5 @@
 import { TotpVerifyOptions } from "speakeasy";
-import { AuthPresenter } from "interface/handler/auth.presenter";
+import { AuthPresenter } from "interface/extl/v1/auth/auth.presenter";
 import { User } from "core/entity/user.entity";
 import {
   AuthAuthenticateDto,
