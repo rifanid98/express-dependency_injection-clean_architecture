@@ -1,23 +1,9 @@
 import * as bcrypt from "bcrypt";
 import { singleton } from "tsyringe";
-
-interface SecurityInterface {
-  hash(value: string): Promise<string>;
-  verify(plain: string, hashed: string): Promise<boolean>;
-}
-
-export class Security implements SecurityInterface {
-  hash(value: string): Promise<string> {
-    return Promise.resolve("");
-  }
-
-  verify(plain: string, hashed: string): Promise<boolean> {
-    return Promise.resolve(false);
-  }
-}
+import { Security } from "../core/port/utils/security.utils";
 
 @singleton()
-export class SecurityImpl extends Security {
+export class SecurityImpl implements Security {
   /**
    * Hashing given string
    * @param value

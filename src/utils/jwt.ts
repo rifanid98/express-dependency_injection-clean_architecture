@@ -1,22 +1,8 @@
 import { singleton } from "tsyringe";
-
-interface JsonWebToken {
-  sign(payload: any): string;
-  verify(payload: any): boolean;
-}
-
-export class Jwt implements JsonWebToken {
-  sign(payload: any): string {
-    return "";
-  }
-
-  verify(payload: any): boolean {
-    return false;
-  }
-}
+import { Jwt } from "../core/port/utils/jwt.utils";
 
 @singleton()
-export class JwtImpl extends Jwt {
+export class JwtImpl implements Jwt {
   sign(payload: any): string {
     return "";
   }

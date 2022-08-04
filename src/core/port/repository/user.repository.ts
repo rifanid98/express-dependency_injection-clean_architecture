@@ -1,6 +1,6 @@
 import { User } from "core/entity/user.entity";
 
-export interface UserRepositoryInterface {
+interface UserRepositoryInterface {
   getAllUsers(): Promise<User[]>;
   getOneUser(user: User): Promise<User>;
   getUserById(id: number): Promise<User>;

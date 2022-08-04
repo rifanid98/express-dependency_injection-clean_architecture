@@ -1,17 +1,8 @@
 import { singleton } from "tsyringe";
-
-interface ConfigInterface {
-  get(envName: string): string;
-}
-
-export class Config implements ConfigInterface {
-  get(envName: string): string {
-    return "";
-  }
-}
+import { Config } from "../core/port/utils/config.utils";
 
 @singleton()
-export class ConfigImpl extends Config {
+export class ConfigImpl implements Config {
   get(envName: string): string {
     return envName;
   }

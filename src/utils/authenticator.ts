@@ -8,34 +8,10 @@ import {
 import * as QRCODE from "qrcode";
 import { QRCodeSegment } from "qrcode";
 import { injectable, singleton } from "tsyringe";
-
-interface AuthenticatorInterface {
-  generateSecret(options?: GenerateSecretOptions): GeneratedSecret;
-  generateTotpToken(totpOptions?: TotpOptions): string;
-  generateQrCodeUrl(text: string | QRCodeSegment[]): Promise<string>;
-  verify(totpVerifyOptions: TotpVerifyOptions): boolean;
-}
-
-export class Authenticator implements AuthenticatorInterface {
-  generateQrCodeUrl(text: string | QRCodeSegment[]): Promise<string> {
-    return Promise.resolve("");
-  }
-
-  generateSecret(options?: GenerateSecretOptions): GeneratedSecret {
-    return undefined;
-  }
-
-  generateTotpToken(totpOptions?: TotpOptions): string {
-    return "";
-  }
-
-  verify(totpVerifyOptions: TotpVerifyOptions): boolean {
-    return false;
-  }
-}
+import { Authenticator } from "../core/port/utils/authenticator.utils";
 
 @singleton()
-export class AuthenticatorImpl extends Authenticator {
+export class AuthenticatorImpl implements Authenticator {
   /**
    * Generates secret for TOTP
    * @param {GenerateSecretOptions} options

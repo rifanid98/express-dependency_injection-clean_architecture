@@ -1,27 +1,8 @@
-import {
-  GlobalResponse,
-  GlobalResponseWithError,
-  HttpMessage,
-  Response,
-} from ".//response";
+import { GlobalResponse, GlobalResponseWithError, Response } from "./response";
+import { HttpException } from "../core/port/utils/exception.utils";
 
-interface Exception {
-  throw(error: GlobalResponseWithError): GlobalResponse;
-}
-
-class HttpException implements Exception {
+export class NotFoundException implements HttpException {
   constructor(error?: any) {
-    this.throw(error ?? HttpMessage.INTERNAL_SERVER_ERROR);
-  }
-
-  throw(error: GlobalResponseWithError): GlobalResponse {
-    return Response.error(error);
-  }
-}
-
-export class NotFoundException extends HttpException {
-  constructor(error?: any) {
-    super(error);
     this.throw(error);
   }
 
@@ -30,9 +11,8 @@ export class NotFoundException extends HttpException {
   }
 }
 
-export class BadRequestException extends HttpException {
+export class BadRequestException implements HttpException {
   constructor(error?: any) {
-    super(error);
     this.throw(error);
   }
 
@@ -41,9 +21,8 @@ export class BadRequestException extends HttpException {
   }
 }
 
-export class NotModifiedException extends HttpException {
+export class NotModifiedException implements HttpException {
   constructor(error?: any) {
-    super(error);
     this.throw(error);
   }
 
@@ -52,9 +31,8 @@ export class NotModifiedException extends HttpException {
   }
 }
 
-export class UnauthorizedException extends HttpException {
+export class UnauthorizedException implements HttpException {
   constructor(error?: any) {
-    super(error);
     this.throw(error);
   }
 
