@@ -2,6 +2,19 @@
 POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
-{}
+{
+  "username": "adninrifandisutantoputra",
+  "password": "password"
+}
+
+### Signup
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "username": "adninrifandisutantoputra",
+  "password": "password"
+}
+
 
 ###

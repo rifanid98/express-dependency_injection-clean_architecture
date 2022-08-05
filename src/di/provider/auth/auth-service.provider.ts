@@ -7,8 +7,8 @@ import { JwtImpl } from "../../../utils/jwt";
 import { Config } from "../../../core/port/utils/config.utils";
 import { Jwt } from "../../../core/port/utils/jwt.utils";
 import { Security } from "../../../core/port/utils/security.utils";
-import { AuthRepository } from "../../../core/port/repository";
-import { AuthRepositoryImpl } from "../../../infrastructure/persistence/mysql/repository";
+import { UserRepository } from "../../../core/port/repository";
+import { UserRepositoryImpl } from "../../../infrastructure/persistence/postgresql/repository";
 
 export const AuthServiceProvider: ProviderRegistry[] = [
   {
@@ -16,8 +16,8 @@ export const AuthServiceProvider: ProviderRegistry[] = [
     useClass: AuthPresenterImpl,
   },
   {
-    token: AuthRepository,
-    useClass: AuthRepositoryImpl,
+    token: UserRepository,
+    useClass: UserRepositoryImpl,
   },
   {
     token: Jwt,

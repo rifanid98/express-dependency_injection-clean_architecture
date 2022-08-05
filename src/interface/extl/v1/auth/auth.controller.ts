@@ -22,18 +22,24 @@ export class AuthControllerImpl implements AuthController {
   constructor(private service: AuthService) {}
 
   public async signin(req: Request, res: Response): Promise<GlobalResponse> {
+    return res.send(HttpResponse.success({ data: req.body }));
+  }
+
+  public async signup(req: Request, res: Response): Promise<GlobalResponse> {
+    const { body } = req;
     const user = new User();
-    user.name = "Adnin Rifandi Sutanto Putra";
-    user.password = "123456";
+
+    this.mapBodyToEntity(body, user);
 
     const result = await this.service
-      .signin(user)
+      .signup(user)
       .catch((err) => console.log(err));
 
     return res.send(HttpResponse.success({ data: result }));
   }
 
-  public async signup(req: Request, res: Response): Promise<GlobalResponse> {
-    return res.send(HttpResponse.success());
+  mapBodyToEntity(body: User, entity: User) {
+    entity.username = body.username;
+    entity.password = body.password;
   }
 }

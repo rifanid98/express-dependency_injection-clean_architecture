@@ -8,6 +8,8 @@ import { AuthServiceProvider } from "../../../di/provider";
 import { Config } from "../../port/utils/config.utils";
 import { Jwt } from "../../port/utils/jwt.utils";
 import { Security } from "../../port/utils/security.utils";
+import { UserRepository } from "../../port/repository";
+import { randomUUID } from "crypto";
 
 @singleton()
 @autoInjectable()
@@ -16,20 +18,21 @@ import { Security } from "../../port/utils/security.utils";
 export class AuthServiceImpl implements AuthService {
   constructor(
     private presenter: AuthPresenter,
-    private authRepository: AuthRepository,
+    private userRepository: UserRepository,
     private jwt: Jwt,
     private configService: Config,
     private securityService: Security
   ) {}
 
   async signup(user: User): Promise<User> {
+    user.id = randomUUID();
     user.password = await this.securityService.hash(user.password);
-    const result = await this.authRepository.signup(user);
-    return this.presenter.show(result);
+    const result = await this.userRepository.createUser(user);
+    return this.presenter.showAll(result);
   }
 
   async signin(user: User): Promise<string> {
-    // const result = await this.authRepository.signin({
+    // const result = await this.userRepository.signin({
     //   email: user.email,
     // });
     //
@@ -44,6 +47,6 @@ export class AuthServiceImpl implements AuthService {
     // const presentedUser = this.presenter.show(result);
     // const jwtPayload = this.presenter.json(presentedUser);
     // return this.jwt.sign(jwtPayload);
-    return Promise.resolve(user.name);
+    return Promise.resolve(user.username);
   }
 }

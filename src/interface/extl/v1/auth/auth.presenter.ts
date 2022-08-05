@@ -20,8 +20,7 @@ export class AuthPresenterImpl implements AuthPresenter {
   show(entity: User): User {
     const presenter = new User();
     presenter.id = entity.id;
-    presenter.email = entity.email;
-    presenter.authenticator = entity.authenticator;
+    presenter.username = entity.username;
     return presenter;
   }
 
