@@ -1,2 +1,2 @@
-export * from "./auth.repository";
-export * from "./user.repository";
+export * from "./auth.repository.impl";
+export * from "./user.repository.impl";
