@@ -8,15 +8,15 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "baseUrl": "./",
     "paths": {
-      "adapter": ["./adapter"],
-      "sharedkernel": ["./sharedkernel"],
+      "interface": ["./interface"],
+      "utils": ["./utils"],
       "di": ["./di"],
-      "domain": ["./domain"],
+      "core": ["./core"],
       "infrastructure": ["./infrastructure"],
-      "usecase": ["./usecase"]
+      "service": ["./service"]
     },
     "incremental": true,
     "skipLibCheck": true,

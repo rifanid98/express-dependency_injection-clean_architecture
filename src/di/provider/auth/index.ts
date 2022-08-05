@@ -1,1 +1,1 @@
-export * from "./auth-usecase.provider";
+export * from "./auth-service.provider";
